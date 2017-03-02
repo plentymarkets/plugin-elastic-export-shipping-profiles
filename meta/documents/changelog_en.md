@@ -1,4 +1,4 @@
-# Release Notes for Elastic Export ShippingProfiles
+# Release Notes for Elastic Export Shipping Profiles
 
 ## v1.0.0 (2017-02-28)
  
