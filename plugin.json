@@ -6,10 +6,10 @@
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007",
   "pluginIcon": "icon_plugin_md.png",
   "price": 0.00,
-  "description": "This plugin adds the format ShippingProfiles to the Elastic Export.",
+  "description": "This plugin adds the format Shipping Profiles to the Elastic Export.",
   "shortDescription": {
-    "de": "Das Plugin ElasticExportShippingProfiles fügt das Datenformat ShippingProfiles zum Elastischen Export hinzu.",
-    "en": "This plugin adds the format ShippingProfiles to the Elastic Export."
+    "de": "Das Plugin ElasticExportShippingProfiles fügt das Datenformat Shipping Profiles zum Elastischen Export hinzu.",
+    "en": "This plugin adds the format Shipping Profiles to the Elastic Export."
   },
   "categories": [
     "3523"
