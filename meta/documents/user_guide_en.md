@@ -1,17 +1,17 @@
 
-# Elastic Export Shipping Profiles Plugin user guide
+# ElasticExportShippingProfiles plugin user guide
 
 <div class="container-toc"></div>
 
 ## Registering with Shipping Profiles
 
-Shipping Profiles is an in-house plentymarkets plugin intended to provide a list with the shipping profiles available for the given articles.
+ElasticExportShippingProfiles is an in-house plentymarkets plugin intended to provide a list with the shipping profiles available for the given items.
 
 ## Setting up the data format ShippingProfiles-Plugin in plentymarkets
 
 To use this format, you need the Elastic Export plugin.
 
-Follow the instructions given on the [Exporting data](https://www.plentymarkets.co.uk/manual/data-exchange/exporting-data/#4) page of the manual to set up Shipping Profiles plugin in plentymarkets.
+Follow the instructions given on the [Exporting data](https://www.plentymarkets.co.uk/manual/data-exchange/exporting-data/#4) page of the manual to set up the data format ShippingProfiles-Plugin in plentymarkets.
 
 ## License
 
