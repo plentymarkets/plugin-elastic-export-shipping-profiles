@@ -1,4 +1,4 @@
-plentymarkets plugin Elastic Export Shipping Profiles
+plentymarkets plugin ElasticExportShippingProfiles
 
 Copyright © 2016 plentymarkets GmbH
 
