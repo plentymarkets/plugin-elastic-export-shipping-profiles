@@ -1,5 +1,10 @@
 # Release Notes for Elastic Export Shipping Profiles
 
+## v1.0.1 (2017-03-16)
+
+### Changed
+- Changed plugin into 'Integration' marketplace.
+
 ## v1.0.0 (2017-02-28)
  
 ### Added
