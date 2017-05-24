@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.0.3 (2017-05-24)
+
+### Geändert
+- Das Plugin Elastic Export ist nun Voraussetzung zur Nutzung des Pluginformats ShippingProfiles.
+
 ## v1.0.2 (2017-03-16)
 
 ### Geändert
