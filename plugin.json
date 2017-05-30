@@ -19,7 +19,7 @@
     "en":"plentymarkets shipping profiles"
   },
   "author": "plentymarkets GmbH",
-  "dependencies": {
+  "require": {
     "ElasticExport": ">=1.0.18"
   },
   "authorIcon": "icon_author_xs.png",
