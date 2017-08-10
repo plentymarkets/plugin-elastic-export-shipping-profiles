@@ -5,7 +5,6 @@ namespace ElasticExportShippingProfiles;
 use Plenty\Modules\DataExchange\Services\ExportPresetContainer;
 use Plenty\Plugin\DataExchangeServiceProvider;
 
-
 /**
  * Class ElasticExportShippingProfilesServiceProvider
  * @package ElasticExportShippingProfiles
@@ -32,6 +31,7 @@ class ElasticExportShippingProfilesServiceProvider extends DataExchangeServicePr
             'ElasticExportShippingProfiles\ResultField\ShippingProfiles',
             'ElasticExportShippingProfiles\Generator\ShippingProfiles',
             '',
+            true,
             true
         );
     }

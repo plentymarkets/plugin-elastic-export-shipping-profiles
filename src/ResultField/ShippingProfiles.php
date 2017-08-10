@@ -2,9 +2,9 @@
 
 namespace ElasticExportShippingProfiles\ResultField;
 
+use Plenty\Modules\Cloud\ElasticSearch\Lib\ElasticSearch;
 use Plenty\Modules\DataExchange\Contracts\ResultFields;
 use Plenty\Modules\Helper\Services\ArrayHelper;
-
 
 /**
  * Class ShippingProfiles
@@ -16,7 +16,6 @@ class ShippingProfiles extends ResultFields
      * @var ArrayHelper
      */
     private $arrayHelper;
-
 
     /**
      * ShippingProfiles constructor.
@@ -36,7 +35,7 @@ class ShippingProfiles extends ResultFields
      */
     public function generateResultFields(array $formatSettings = []):array
     {
-        $this->setOrderByList(['item.id', 'ASC']);
+        $this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
 
         // Fields
         $fields = [
