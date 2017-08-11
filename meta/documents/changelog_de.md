@@ -3,7 +3,7 @@
 ## v1.0.5 (2017-08-10)
 
 ### Geändert
-- Das Formatplugin basiert nun nur noch auf Elastic Search.
+- Das Format-Plugin basiert nun nur noch auf Elastic Search.
 - Die Performance wurde verbessert.
 
 ## v1.0.4 (2017-07-18)
@@ -14,7 +14,7 @@
 ## v1.0.3 (2017-05-24)
 
 ### Geändert
-- Das Plugin Elastic Export ist nun Voraussetzung zur Nutzung des Pluginformats ShippingProfiles.
+- Das Plugin Elastic Export ist nun Voraussetzung zur Nutzung des Plugin-Formats ShippingProfiles.
 
 ## v1.0.2 (2017-03-16)
 
