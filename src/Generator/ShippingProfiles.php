@@ -78,15 +78,15 @@ class ShippingProfiles extends CSVPluginGenerator
 
             do
             {
+                $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.writtenLines', [
+                    'Lines written' => $limit,
+                ]);
+
                 // Stop writing if limit is reached
                 if($limitReached === true)
                 {
                     break;
                 }
-
-                $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.writtenLines', [
-                    'Lines written' => $limit,
-                ]);
 
                 $esStartTime = microtime(true);
 
