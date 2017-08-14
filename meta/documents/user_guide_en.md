@@ -120,7 +120,7 @@ The following table lists details for settings, format settings and recommended 
             item_id
         </td>
         <td>
-            <b>Required</b><br>>
+            <b>Required</b><br>
             <b>Content:</b> The variation id of the main variation.
         </td>
     </tr>
