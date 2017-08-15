@@ -87,6 +87,22 @@ The following table lists details for settings, format settings and recommended 
     </tr>
     <tr>
         <td>
+            Preview text
+        </td>
+        <td>
+            This option is not relevant for this format.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Image
+        </td>
+        <td>
+            This option is not relevant for this format.
+        </td>
+    </tr>
+    <tr>
+        <td>
             Offer price
         </td>
         <td>
@@ -96,6 +112,14 @@ The following table lists details for settings, format settings and recommended 
     <tr>
         <td>
             VAT note
+        </td>
+        <td>
+            This option is not relevant for this format.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Override item availability
         </td>
         <td>
             This option is not relevant for this format.
@@ -129,7 +153,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id1
         </td>
         <td>
-            <b>Content:</b> The <b>first ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>first ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
     <tr>
@@ -137,7 +161,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id2
         </td>
         <td>
-            <b>Content:</b> The <b>second ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>second ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
     <tr>
@@ -145,7 +169,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id3
         </td>
         <td>
-            <b>Content:</b> The <b>third ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>third ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
     <tr>
@@ -153,7 +177,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id4
         </td>
         <td>
-            <b>Content:</b> The <b>fourth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>fourth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
     <tr>
@@ -161,7 +185,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id5
         </td>
         <td>
-            <b>Content:</b> The <b>fifth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>fifth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
     <tr>
@@ -169,7 +193,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id&lt;&lt;index&gt;&gt;
         </td>
         <td>
-            <b>Content:</b> The <b>index based ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Global » ShippingProfiles</b>, if it exists.
+            <b>Content:</b> The <b>index based ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Item » Edit item » Global » Shipping profiles</b>, if it exists.
         </td>
     </tr>
 </table>

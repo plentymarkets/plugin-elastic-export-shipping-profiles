@@ -48,7 +48,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             Dateiname
         </td>
         <td>
-            Der Dateiname muss auf <b>.csv</b> oder <b>.txt</b>.
+            Der Dateiname muss auf <b>.csv</b> oder <b>.txt</b> enden.
         </td>
     </tr>
     <tr>
@@ -87,6 +87,22 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
     </tr>
     <tr>
         <td>
+            Vorschautext
+        </td>
+        <td>
+            Diese Option ist für dieses Format nicht relevant.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Bild
+        </td>
+        <td>
+            Diese Option ist für dieses Format nicht relevant.
+        </td>
+    </tr>
+    <tr>
+        <td>
             Angebotspreis
         </td>
         <td>
@@ -96,6 +112,14 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
     <tr>
         <td>
             MwSt.-Hinweis
+        </td>
+        <td>
+            Diese Option ist für dieses Format nicht relevant.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Artikelverfügbarkeit überschreiben
         </td>
         <td>
             Diese Option ist für dieses Format nicht relevant.
@@ -129,7 +153,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id1
         </td>
         <td>
-            <b>Inhalt:</b> Entsprechend der Formateinstellung <b>Barcode</b>.
+            <b>Inhalt:</b> Die <b>erste Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
     <tr>
@@ -137,8 +161,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id2
         </td>
         <td>
-            <b>Pflichtfeld</b><br>
-            <b>Inhalt:</b> Entsprechend der Formateinstellung <b>Artikelname</b>.
+            <b>Inhalt:</b> Die <b>zweite Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
     <tr>
@@ -146,7 +169,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id3
         </td>
         <td>
-            <b>Inhalt:</b> Der <b>Name des Herstellers</b> des Artikels. Der <b>Externe Name</b> unter <b>Einstellungen » Artikel » Hersteller</b> wird bevorzugt, wenn vorhanden.
+            <b>Inhalt:</b> Die <b>dritte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
     <tr>
@@ -154,9 +177,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id4
         </td>
         <td>
-            <b>Pflichtfeld</b><br>
-            <b>Beschränkung:</b> max 999.999,99 <br>
-            <b>Inhalt:</b> Der <b>Verkaufspreis</b> der Variante.
+            <b>Inhalt:</b> Die <b>vierte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
     <tr>
@@ -164,8 +185,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id5
         </td>
         <td>
-            <b>Beschränkung:</b> max 999.999,99 <br>
-            <b>Inhalt:</b> Der <b>Verkaufspreis</b> vom Preis-Typ <b>UVP</b> der Variante, wenn dieser höher ist als der Preis.
+            <b>Inhalt:</b> Die <b>fünfte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
     <tr>
@@ -173,8 +193,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id&lt;&lt;index&gt;&gt;
         </td>
         <td>
-            <b>Pflichtfeld</b><br>
-            <b>Inhalt:</b> Der ISO-Code der <b>Währung</b> des Preises.
+            <b>Inhalt:</b> Das <b>indexbasierte Versandprofil</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Global » Versandprofile</b>, wenn es existiert.
         </td>
     </tr>
 </table>
