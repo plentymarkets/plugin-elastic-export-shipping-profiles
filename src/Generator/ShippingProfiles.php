@@ -212,10 +212,9 @@ class ShippingProfiles extends CSVPluginGenerator
      * Get list of supported shipping profile ids for the given item.
      *
      * @param  int $itemId
-     * @param  bool $shippingProfileName
      * @return array
      */
-    private function getShippingProfilesList(int $itemId, bool $shippingProfileName = false):array
+    private function getShippingProfilesList(int $itemId):array
     {
         $shippingProfiles = [];
 
@@ -232,19 +231,8 @@ class ShippingProfiles extends CSVPluginGenerator
             {
                 if($itemShippingProfile instanceof ItemShippingProfiles)
                 {
-                    if($shippingProfileName === true)
-                    {
-                        // Get the shipping profile
-                        $shippingProfile = $this->getShippingProfile($itemShippingProfile->profileId);
-
-                        // Add the name of the shipping profile
-                        $shippingProfiles[] = $shippingProfile->name;
-                    }
-                    else
-                    {
-                        // Add the id of the shipping profile
-                        $shippingProfiles[] = $itemShippingProfile->profileId;
-                    }
+                    // Add the id of the shipping profile
+                    $shippingProfiles[] = $itemShippingProfile->profileId;
                 }
             }
 
@@ -252,20 +240,6 @@ class ShippingProfiles extends CSVPluginGenerator
         }
 
         return $shippingProfiles;
-    }
-
-    /**
-     * Get the ShippingProfile model.
-     *
-     * @param  int $shippingProfileId
-     * @return ShippingProfile
-     */
-    private function getShippingProfile($shippingProfileId): ShippingProfile
-    {
-        /** @var ShippingProfileRepositoryContract $shippingProfileRepository */
-        $shippingProfileRepository = pluginApp(ShippingProfileRepositoryContract::class);
-
-        return $shippingProfileRepository->get($shippingProfileId);
     }
 
     /**
