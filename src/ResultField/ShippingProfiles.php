@@ -42,6 +42,10 @@ class ShippingProfiles extends ResultFields
             [
                 //item
                 'item.id',
+
+                //variation
+                'id',
+                'variation.stockLimitation',
             ]
         ];
 

@@ -3,13 +3,12 @@
 namespace ElasticExportShippingProfiles\Generator;
 
 use ElasticExport\Helper\ElasticExportCoreHelper;
+use ElasticExport\Helper\ElasticExportStockHelper;
 use Plenty\Modules\DataExchange\Contracts\CSVPluginGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
 use Plenty\Modules\Item\ItemShippingProfiles\Contracts\ItemShippingProfilesRepositoryContract;
 use Plenty\Modules\Item\ItemShippingProfiles\Models\ItemShippingProfiles;
 use Plenty\Modules\Item\Search\Contracts\VariationElasticSearchScrollRepositoryContract;
-use Plenty\Modules\Listing\ShippingProfile\Contracts\ShippingProfileRepositoryContract;
-use Plenty\Modules\Listing\ShippingProfile\Models\ShippingProfile;
 use Plenty\Plugin\Log\Loggable;
 
 /**
@@ -28,6 +27,11 @@ class ShippingProfiles extends CSVPluginGenerator
      * @var ElasticExportCoreHelper
      */
     private $elasticExportHelper;
+
+    /**
+     * @var ElasticExportStockHelper
+     */
+    private $elasticExportStockHelper;
 
     /**
      * @var ArrayHelper
@@ -60,13 +64,13 @@ class ShippingProfiles extends CSVPluginGenerator
     {
         $this->elasticExportHelper = pluginApp(ElasticExportCoreHelper::class);
 
+        $this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
+
         $settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
         $this->setDelimiter(self::DELIMITER);
 
         $this->setEnclosure(self::ENCLOSURE);
-
-        $startTime = microtime(true);
 
         $rows = [];
 
@@ -78,33 +82,21 @@ class ShippingProfiles extends CSVPluginGenerator
 
             do
             {
-                $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.writtenLines', [
-                    'Lines written' => $limit,
-                ]);
-
                 // Stop writing if limit is reached
                 if($limitReached === true)
                 {
                     break;
                 }
 
-                $esStartTime = microtime(true);
-
                 // Get the data from Elastic Search
                 $resultList = $elasticSearch->execute();
 
-                $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.esDuration', [
-                    'Elastic Search duration' => microtime(true) - $esStartTime,
-                ]);
-
-                if(count($resultList['error']) > 0)
+                if(!is_null($resultList['error']) && count($resultList['error']) > 0)
                 {
                     $this->getLogger(__METHOD__)->error('ElasticExportShippingProfiles::log.occurredElasticSearchErrors', [
                         'Error message' => $resultList['error'],
                     ]);
                 }
-
-                $buildRowsStartTime = microtime(true);
 
                 if(is_array($resultList['documents']) && count($resultList['documents']) > 0)
                 {
@@ -126,6 +118,12 @@ class ShippingProfiles extends CSVPluginGenerator
                             {
                                 // Create the rows with shipping profiles for an item
                                 $previousId = $variation['data']['item']['id'];
+
+                                // If filtered by stock is set and stock is negative, then skip the variation
+                                if($this->elasticExportStockHelper->isFilteredByStock($variation, $filter) === true)
+                                {
+                                    continue;
+                                }
 
                                 $row = [
                                     'item_id' => $previousId,
@@ -152,10 +150,6 @@ class ShippingProfiles extends CSVPluginGenerator
                             ]);
                         }
                     }
-
-                    $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.buildRowsDuration', [
-                        'Build rows duration' => microtime(true) - $buildRowsStartTime,
-                    ]);
                 }
 
             } while ($elasticSearch->hasNext());
@@ -169,10 +163,6 @@ class ShippingProfiles extends CSVPluginGenerator
         {
             $this->addCSVContent($this->row(array_values($row)));
         }
-
-        $this->getLogger(__METHOD__)->debug('ElasticExportShippingProfiles::log.fileGenerationDuration', [
-            'Whole file generation duration' => microtime(true) - $startTime,
-        ]);
     }
 
     /**
