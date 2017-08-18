@@ -145,7 +145,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
         </td>
         <td>
             <b>Pflichtfeld</b><br>
-            <b>Inhalt:</b> Die Varianten-ID der Main-Variante.
+            <b>Inhalt:</b> Die Varianten-ID der Hauptvariante.
         </td>
     </tr>
     <tr>
@@ -153,7 +153,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id1
         </td>
         <td>
-            <b>Inhalt:</b> Die <b>erste Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>erste Versandprofil</b> des Artikels.
         </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id2
         </td>
         <td>
-            <b>Inhalt:</b> Die <b>zweite Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>zweite Versandprofil</b> des Artikels.
         </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id3
         </td>
         <td>
-            <b>Inhalt:</b> Die <b>dritte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>dritte Versandprofil</b> des Artikels.
         </td>
     </tr>
     <tr>
@@ -177,7 +177,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id4
         </td>
         <td>
-            <b>Inhalt:</b> Die <b>vierte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>vierte Versandprofil</b> des Artikels.
         </td>
     </tr>
     <tr>
@@ -185,7 +185,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id5
         </td>
         <td>
-            <b>Inhalt:</b> Die <b>fünfte Versandprofile</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>fünfte Versandprofil</b> des Artikels.
         </td>
     </tr>
     <tr>
@@ -193,7 +193,7 @@ In der folgenden Tabelle finden Sie spezifische Hinweise zu den Einstellungen, F
             parcel_service_preset_id&lt;&lt;index&gt;&gt;
         </td>
         <td>
-            <b>Inhalt:</b> Das <b>indexbasierte Versandprofil</b> des Artikels. Die <b>Versandprofile</b> innerhalb <b>Artikel » Artikel bearbeiten » Artikel öffnen » Global » Versandprofile</b>, wenn es existiert.
+            <b>Inhalt:</b> Das <b>indexbasierte Versandprofil</b> des Artikels.
         </td>
     </tr>
 </table>
