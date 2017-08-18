@@ -145,7 +145,7 @@ The following table lists details for settings, format settings and recommended 
         </td>
         <td>
             <b>Required</b><br>
-            <b>Content:</b> The variation id of the main variation.
+            <b>Content:</b> The variation ID of the main variation.
         </td>
     </tr>
     <tr>
@@ -153,7 +153,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id1
         </td>
         <td>
-            <b>Content:</b> The <b>first ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>first ShippingProfile</b> of the item.
         </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id2
         </td>
         <td>
-            <b>Content:</b> The <b>second ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>second ShippingProfile</b> of the item.
         </td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id3
         </td>
         <td>
-            <b>Content:</b> The <b>third ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>third ShippingProfile</b> of the item.
         </td>
     </tr>
     <tr>
@@ -177,7 +177,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id4
         </td>
         <td>
-            <b>Content:</b> The <b>fourth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>fourth ShippingProfile</b> of the item.
         </td>
     </tr>
     <tr>
@@ -185,7 +185,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id5
         </td>
         <td>
-            <b>Content:</b> The <b>fifth ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>fifth ShippingProfile</b> of the item.
         </td>
     </tr>
     <tr>
@@ -193,7 +193,7 @@ The following table lists details for settings, format settings and recommended 
             parcel_service_preset_id&lt;&lt;index&gt;&gt;
         </td>
         <td>
-            <b>Content:</b> The <b>index based ShippingProfile</b> of the item. The <b>ShippingProfile</b> within <b>Items » Edit item » Open item » Global » Shipping profiles</b>, if it exists.
+            <b>Content:</b> The <b>index based ShippingProfile</b> of the item.
         </td>
     </tr>
 </table>
