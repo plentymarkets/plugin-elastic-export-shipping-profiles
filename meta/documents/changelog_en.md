@@ -1,5 +1,11 @@
 # Release Notes for Elastic Export Shipping Profiles
 
+## v1.0.5 (2017-08-18)
+
+### Changed 
+- The format plugin is now based on Elastic Search only.
+- The performance has been improved.
+
 ## v1.0.4 (2017-07-18)
 
 ### Fixed

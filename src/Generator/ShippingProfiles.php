@@ -3,10 +3,13 @@
 namespace ElasticExportShippingProfiles\Generator;
 
 use ElasticExport\Helper\ElasticExportCoreHelper;
+use ElasticExport\Helper\ElasticExportStockHelper;
 use Plenty\Modules\DataExchange\Contracts\CSVPluginGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
-use Plenty\Modules\Item\DataLayer\Models\Record;
-use Plenty\Modules\Item\DataLayer\Models\RecordList;
+use Plenty\Modules\Item\ItemShippingProfiles\Contracts\ItemShippingProfilesRepositoryContract;
+use Plenty\Modules\Item\ItemShippingProfiles\Models\ItemShippingProfiles;
+use Plenty\Modules\Item\Search\Contracts\VariationElasticSearchScrollRepositoryContract;
+use Plenty\Plugin\Log\Loggable;
 
 /**
  * Class ShippingProfiles
@@ -14,10 +17,21 @@ use Plenty\Modules\Item\DataLayer\Models\RecordList;
  */
 class ShippingProfiles extends CSVPluginGenerator
 {
+    use Loggable;
+
+    const DELIMITER = "|";
+
+    const ENCLOSURE = "'";
+
     /**
      * @var ElasticExportCoreHelper
      */
-    private $elasticExportCoreHelper;
+    private $elasticExportHelper;
+
+    /**
+     * @var ElasticExportStockHelper
+     */
+    private $elasticExportStockHelper;
 
     /**
      * @var ArrayHelper
@@ -28,7 +42,6 @@ class ShippingProfiles extends CSVPluginGenerator
      * @var int
      */
     private $columns = 5;
-
 
     /**
      * ShippingProfiles constructor.
@@ -43,50 +56,112 @@ class ShippingProfiles extends CSVPluginGenerator
     /**
      * Generates and populates the data into the CSV file.
      *
-     * @param mixed $resultData
+     * @param VariationElasticSearchScrollRepositoryContract $elasticSearch
      * @param array $formatSettings
-     * @param mixed $filter
+     * @param array $filter
      */
-    protected function generatePluginContent($resultData, array $formatSettings = [], array $filter = [])
+    protected function generatePluginContent($elasticSearch, array $formatSettings = [], array $filter = [])
     {
-        $this->elasticExportCoreHelper = pluginApp(ElasticExportCoreHelper::class);
+        $this->elasticExportHelper = pluginApp(ElasticExportCoreHelper::class);
 
-        if(is_array($resultData) && count($resultData['documents']) > 0)
+        $this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
+
+        $settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
+
+        $this->setDelimiter(self::DELIMITER);
+
+        $this->setEnclosure(self::ENCLOSURE);
+
+        $rows = [];
+
+        if($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)
         {
-            $this->setDelimiter(";");
-            $this->setEnclosure("'");
+            // Initiate the counter for the variations limit
+            $limitReached = false;
+            $limit = 0;
 
-            //Generates a RecordList form the ItemDataLayer for the given item ids
-            $idlResultList = $this->generateIdlList($resultData, $filter);
-
-            if(isset($idlResultList) && $idlResultList instanceof RecordList)
+            do
             {
-                $rows = [];
-
-                foreach($idlResultList as $item)
+                // Stop writing if limit is reached
+                if($limitReached === true)
                 {
-                    if(isset($item) && $item instanceof Record)
-                    {
-                        $row = [
-                            'item_id' => $item->itemBase->id,
-                        ];
+                    break;
+                }
 
-                        foreach($this->getShippingSupportIds($item) as $key => $id)
+                // Get the data from Elastic Search
+                $resultList = $elasticSearch->execute();
+
+                if(!is_null($resultList['error']) && count($resultList['error']) > 0)
+                {
+                    $this->getLogger(__METHOD__)->error('ElasticExportShippingProfiles::log.occurredElasticSearchErrors', [
+                        'Error message' => $resultList['error'],
+                    ]);
+                }
+
+                if(is_array($resultList['documents']) && count($resultList['documents']) > 0)
+                {
+                    $previousId = null;
+
+                    foreach ($resultList['documents'] as $variation)
+                    {
+                        // Stop and set the flag if limit is reached
+                        if($limit == $filter['limit'])
                         {
-                            $row['parcel_service_preset_id' . (string) ($key+1)] = $id;
+                            $limitReached = true;
+                            break;
                         }
 
-                        $rows[] = $row;
+                        try
+                        {
+                            // Shipping profiles are available directly on the item
+                            if($previousId === null || $previousId != $variation['data']['item']['id'])
+                            {
+                                // Create the rows with shipping profiles for an item
+                                $previousId = $variation['data']['item']['id'];
+
+                                // If filtered by stock is set and stock is negative, then skip the variation
+                                if($this->elasticExportStockHelper->isFilteredByStock($variation, $filter) === true)
+                                {
+                                    continue;
+                                }
+
+                                $row = [
+                                    'item_id' => $previousId,
+                                ];
+
+                                foreach($this->getShippingProfilesList($previousId) as $key => $id)
+                                {
+                                    $row['parcel_service_preset_id' . (string) ($key+1)] = $id;
+                                }
+
+                                // Add the shipping profiles
+                                $rows[] = $row;
+
+                                // Count the item line
+                                $limit += 1;
+                            }
+                        }
+                        catch(\Throwable $throwable)
+                        {
+                            $this->getLogger(__METHOD__)->error('ElasticExportShippingProfiles::logs.fillRowError', [
+                                'Error message ' => $throwable->getMessage(),
+                                'Error line'     => $throwable->getLine(),
+                                'ItemId'         => $variation['data']['item']['id'],
+                            ]);
+                        }
                     }
                 }
-    
-                $this->addCSVContent($this->head());
-    
-                foreach($rows as $row)
-                {
-                    $this->addCSVContent($this->row(array_values($row)));
-                }
-            }
+
+            } while ($elasticSearch->hasNext());
+        }
+
+        // Create the header of the CSV file
+        $this->addCSVContent($this->head());
+
+        // Print the list of items with their shipping profiles
+        foreach($rows as $row)
+        {
+            $this->addCSVContent($this->row(array_values($row)));
         }
     }
 
@@ -108,7 +183,7 @@ class ShippingProfiles extends CSVPluginGenerator
     }
 
     /**
-     * Get row.
+     * Get row and update the missing columns.
      *
      * @param  array $row
      * @return array
@@ -126,21 +201,35 @@ class ShippingProfiles extends CSVPluginGenerator
     /**
      * Get list of supported shipping profile ids for the given item.
      *
-     * @param  Record $item
-     * @return array<int,int>
+     * @param  int $itemId
+     * @return array
      */
-    private function getShippingSupportIds(Record $item):array
+    private function getShippingProfilesList(int $itemId):array
     {
-        $ids = [];
+        $shippingProfiles = [];
 
-        foreach($item->itemShippingProfilesList as $itemShippingProfile)
+        /**
+         * @var ItemShippingProfilesRepositoryContract $itemShippingProfilesRepository
+         */
+        $itemShippingProfilesRepository = pluginApp(ItemShippingProfilesRepositoryContract::class);
+
+        if($itemShippingProfilesRepository instanceof ItemShippingProfilesRepositoryContract)
         {
-            $ids[] = $itemShippingProfile->id;
+            $itemShippingProfilesList = $itemShippingProfilesRepository->findByItemId($itemId);
+
+            foreach($itemShippingProfilesList as $itemShippingProfile)
+            {
+                if($itemShippingProfile instanceof ItemShippingProfiles)
+                {
+                    // Add the id of the shipping profile
+                    $shippingProfiles[] = $itemShippingProfile->profileId;
+                }
+            }
+
+            $this->maxColumns(count($shippingProfiles));
         }
 
-        $this->maxColumns(count($ids));
-
-        return $ids;
+        return $shippingProfiles;
     }
 
     /**
@@ -152,39 +241,5 @@ class ShippingProfiles extends CSVPluginGenerator
     private function maxColumns(int $columns)
     {
         $this->columns = $columns > $this->columns ? $columns : $this->columns;
-    }
-
-    /**
-     * Creates a list of Records from the given item ids.
-     *
-     * @param array $resultData
-     * @param array $filter
-     * @return RecordList|string
-     */
-    private function generateIdlList($resultData, $filter)
-    {
-        // Create a List of all ItemIds
-        $itemIdList = array();
-        foreach($resultData['documents'] as $item)
-        {
-            if(!in_array($item['data']['item']['id'], $itemIdList))
-            {
-                $itemIdList[] = $item['data']['item']['id'];
-            }
-        }
-
-        // Get the missing fields in ES from IDL(ItemDataLayer)
-        if(is_array($itemIdList) && count($itemIdList) > 0)
-        {
-            /**
-             * @var \ElasticExportShippingProfiles\IDL_ResultList\ShippingProfiles $idlResultList
-             */
-            $idlResultList = pluginApp(\ElasticExportShippingProfiles\IDL_ResultList\ShippingProfiles::class);
-
-            // Return the list of results for the given variation ids
-            return $idlResultList->getResultList($itemIdList, $filter);
-        }
-
-        return '';
     }
 }
