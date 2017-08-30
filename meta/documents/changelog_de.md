@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.0.6 (2017-08-30)
+
+### Geändert
+- Das Plugin Icon wurde erneuert.
+
 ## v1.0.5 (2017-08-18)
 
 ### Geändert
