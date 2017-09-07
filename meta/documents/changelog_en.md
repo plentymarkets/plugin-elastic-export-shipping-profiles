@@ -1,5 +1,10 @@
 # Release Notes for Elastic Export Shipping Profiles
 
+## v1.0.7 (2017-09-07)
+
+### Fixed
+- The columns are now named equal to the dynamic import format ShippingProfiles.
+
 ## v1.0.6 (2017-08-30)
 
 ### Changed
