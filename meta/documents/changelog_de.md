@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.0.7 (2017-09-07)
+
+### Behoben
+- Die Spalten sind jetzt analog zum dynamischen Import ShippingProfiles benannt.
+
 ## v1.0.6 (2017-08-30)
 
 ### Geändert

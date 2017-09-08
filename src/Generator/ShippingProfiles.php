@@ -131,7 +131,14 @@ class ShippingProfiles extends CSVPluginGenerator
 
                                 foreach($this->getShippingProfilesList($previousId) as $key => $id)
                                 {
-                                    $row['parcel_service_preset_id' . (string) ($key+1)] = $id;
+                                    if($key == 0)
+									{
+										$row['parcel_service_preset_id'] = $id;
+									}
+									else
+									{
+										$row['parcel_service_preset_id'.$key] = $id;
+									}
                                 }
 
                                 // Add the shipping profiles
@@ -174,10 +181,17 @@ class ShippingProfiles extends CSVPluginGenerator
     {
         $row = ['item_id'];
 
-        for($i = 1; $i <= $this->columns; $i++)
-        {
-            $row[] = 'parcel_service_preset_id' . (string) $i;
-        }
+		for($i = 0; $i <= $this->columns; $i++)
+		{
+			if($i == 0)
+			{
+				$row[] = 'parcel_service_preset_id';
+			}
+			else
+			{
+				$row[] = 'parcel_service_preset_id' . (string) $i;
+			}
+		}
 
         return $row;
     }
