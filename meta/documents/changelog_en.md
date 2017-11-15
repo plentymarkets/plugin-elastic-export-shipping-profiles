@@ -3,7 +3,7 @@
 ## v1.0.8 (2017-11-15)
 
 ### Changed
-- Changed delimiter from pipe to semicolon
+- The delimiter was changed from pipe to semicolon
 
 ## v1.0.7 (2017-09-07)
 
