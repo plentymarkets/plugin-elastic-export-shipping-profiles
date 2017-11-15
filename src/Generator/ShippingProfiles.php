@@ -19,7 +19,7 @@ class ShippingProfiles extends CSVPluginGenerator
 {
     use Loggable;
 
-    const DELIMITER = "|";
+    const DELIMITER = ";";
 
     const ENCLOSURE = "'";
 
