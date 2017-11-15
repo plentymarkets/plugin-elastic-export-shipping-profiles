@@ -3,7 +3,7 @@
 ## v1.0.8 (2017-11-15)
 
 ### Changed
-- The delimiter was changed from pipe to semicolon
+- The delimiter was changed from pipe to semicolon.
 
 ## v1.0.7 (2017-09-07)
 
@@ -44,4 +44,4 @@
 ## v1.0.0 (2017-02-28)
  
 ### Added
-- Added initial plugin files
+- Added initial plugin files.
