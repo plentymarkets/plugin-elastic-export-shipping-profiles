@@ -3,7 +3,7 @@
 ## v1.0.8 (2017-11-15)
 
 ### Geändert
-- Trennzeichen wurde von Pipe auf Semikolon geändert
+- Das Trennzeichen wurde von Pipe auf Semikolon geändert.
 
 ## v1.0.7 (2017-09-07)
 
