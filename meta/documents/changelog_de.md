@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.0.9 (2018-02-20)
+
+### Geändert
+- Plugin-Kurzbeschreibung wurde angepasst.
+
 ## v1.0.8 (2017-11-15)
 
 ### Geändert

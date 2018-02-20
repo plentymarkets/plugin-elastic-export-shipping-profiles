@@ -2,14 +2,14 @@
   "name": "ElasticExportShippingProfiles",
   "namespace": "ElasticExportShippingProfiles",
   "type": "export",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007",
   "pluginIcon": "icon_plugin_md.png",
   "price": 0.00,
   "description": "This plugin adds the format Shipping Profiles to the Elastic Export.",
   "shortDescription": {
-    "de": "Das Plugin ElasticExportShippingProfiles fügt das Datenformat ShippingProfiles-Plugin zum Elastischen Export hinzu.",
-    "en": "This plugin adds the format ShippingProfiles-Plugin to the Elastic Export."
+    "de": "Die Integration des Datenformats ShippingProfiles-Plugin ermöglicht den Austausch von Artikelversandprofilen.",
+    "en": "The integration of the data format ShippingProfiles-Plugin enables the transfer of item shipping profiles."
   },
   "categories": [
     "3521"
