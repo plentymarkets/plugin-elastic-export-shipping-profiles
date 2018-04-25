@@ -1,5 +1,11 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.0.10 (2018-04-25)
+
+### Geändert
+- Die Filtrierung der Varianten wird durch die Klasse FiltrationService vorgenommen.
+- Vorschaubilder aktualisiert.
+
 ## v1.0.9 (2018-02-20)
 
 ### Geändert

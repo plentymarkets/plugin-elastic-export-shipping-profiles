@@ -2,7 +2,7 @@
   "name": "ElasticExportShippingProfiles",
   "namespace": "ElasticExportShippingProfiles",
   "type": "export",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007",
   "pluginIcon": "icon_plugin_md.png",
   "price": 0.00,
@@ -11,9 +11,7 @@
     "de": "Die Integration des Datenformats ShippingProfiles-Plugin ermöglicht den Austausch von Artikelversandprofilen.",
     "en": "The integration of the data format ShippingProfiles-Plugin enables the transfer of item shipping profiles."
   },
-  "categories": [
-    "3521"
-  ],
+  "categories": ["3521"],
   "marketplaceName": {
     "de":"plentymarkets Versandprofile",
     "en":"plentymarkets shipping profiles"
