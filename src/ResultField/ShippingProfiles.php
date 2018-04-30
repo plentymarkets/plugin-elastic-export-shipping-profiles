@@ -35,7 +35,7 @@ class ShippingProfiles extends ResultFields
      */
     public function generateResultFields(array $formatSettings = []):array
     {
-        $this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
+        $this->setOrderByList(['path' => 'item.id', 'order' => ElasticSearch::SORTING_ORDER_ASC]);
 
         // Fields
         $fields = [
