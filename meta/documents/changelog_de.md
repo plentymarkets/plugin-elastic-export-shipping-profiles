@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Shipping Profiles
 
+## v1.1.9 (2022-05-26)
+
+### Geändert
+- UPDATE - Zusätzliche Updates für Kompatibilität mit PHP 8.
+
 ## v1.0.11 (2018-04-30)
 
 ### Geändert

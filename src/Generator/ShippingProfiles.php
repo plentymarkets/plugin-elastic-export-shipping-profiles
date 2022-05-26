@@ -96,14 +96,14 @@ class ShippingProfiles extends CSVPluginGenerator
                 // Get the data from Elastic Search
                 $resultList = $elasticSearch->execute();
 
-                if(!is_null($resultList['error']) && count($resultList['error']) > 0)
+                if(!is_null($resultList['error']) && count($resultList['error'] ?? []) > 0)
                 {
                     $this->getLogger(__METHOD__)->error('ElasticExportShippingProfiles::log.occurredElasticSearchErrors', [
                         'Error message' => $resultList['error'],
                     ]);
                 }
 
-                if(is_array($resultList['documents']) && count($resultList['documents']) > 0)
+                if(is_array($resultList['documents']) && count($resultList['documents'] ?? []) > 0)
                 {
                     $previousId = null;
 
@@ -209,7 +209,7 @@ class ShippingProfiles extends CSVPluginGenerator
      */
     private function row(array $row):array
     {
-        for($i = count($row); $i <= $this->columns; $i++)
+        for($i = count($row ?? []); $i <= $this->columns; $i++)
         {
             $row[] = '';
         }
@@ -245,7 +245,7 @@ class ShippingProfiles extends CSVPluginGenerator
                 }
             }
 
-            $this->maxColumns(count($shippingProfiles));
+            $this->maxColumns(count($shippingProfiles ?? []));
         }
 
         return $shippingProfiles;
